@@ -38,12 +38,12 @@ export default function CreateAdminForm({ onBack, onCreated }: Props) {
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
             <div className="space-y-2"><label className="text-sm font-medium">To'liq ism *</label><Input value={form.fullName} onChange={e => setForm({ ...form, fullName: e.target.value })} required /></div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Username *</label><Input value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Telefon *</label><Input value={form.phoneNumber} onChange={e => setForm({ ...form, phoneNumber: e.target.value })} required /></div>
             </div>
             <div className="space-y-2"><label className="text-sm font-medium">Parol *</label><Input type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} required /></div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Rol</label>
                 <select value={form.role} onChange={e => setForm({ ...form, role: Number(e.target.value) })} className={selectClass}>

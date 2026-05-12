@@ -38,7 +38,7 @@ export default function CreateCategoryForm({ onBack, onCreated }: Props) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Nomi (UZ) *</label>
                 <Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required />

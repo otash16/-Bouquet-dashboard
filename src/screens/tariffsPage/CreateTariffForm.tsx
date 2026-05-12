@@ -38,16 +38,16 @@ export default function CreateTariffForm({ onBack, onCreated }: Props) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (UZ) *</label><Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (RU)</label><Input value={form.nameRu} onChange={e => setForm({ ...form, nameRu: e.target.value })} /></div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Narx (so'm) *</label><Input type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Muddat (kun) *</label><Input type="number" value={form.durationDays} onChange={e => setForm({ ...form, durationDays: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Gul limiti</label><Input type="number" value={form.flowerLimit} onChange={e => setForm({ ...form, flowerLimit: e.target.value })} placeholder="0 = cheksiz" /></div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Tavsif (UZ)</label><Textarea value={form.descUz} onChange={e => setForm({ ...form, descUz: e.target.value })} rows={3} /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Tavsif (RU)</label><Textarea value={form.descRu} onChange={e => setForm({ ...form, descRu: e.target.value })} rows={3} /></div>
             </div>

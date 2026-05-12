@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Sun, Moon, LogOut, User, KeyRound, Monitor, ChevronDown } from 'lucide-react';
+import { Sun, Moon, LogOut, User, KeyRound, Monitor, ChevronDown, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTheme } from '@/theme';
 import { selectUser } from '@/auth/selector';
@@ -9,7 +9,11 @@ import { logout } from '@/auth/slice';
 import AuthService from '@/app/services/AuthService';
 import ChangePasswordModal from './ChangePasswordModal';
 
-export default function AppNavbar() {
+interface Props {
+  onMenuClick: () => void;
+}
+
+export default function AppNavbar({ onMenuClick }: Props) {
   const { theme, setTheme } = useTheme();
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
@@ -29,8 +33,11 @@ export default function AppNavbar() {
 
   return (
     <>
-      <header className="h-14 border-b border-border bg-background flex items-center justify-between px-6">
-        <div>
+      <header className="h-14 border-b border-border bg-background flex items-center justify-between px-4 md:px-6">
+        <div className="flex items-center gap-3">
+          <Button variant="ghost" size="icon" className="md:hidden" onClick={onMenuClick}>
+            <Menu className="h-5 w-5" />
+          </Button>
           <h2 className="text-sm font-medium text-muted-foreground">
             {user?.shopName ? user.shopName : 'Bouquet Admin'}
           </h2>
@@ -51,7 +58,7 @@ export default function AppNavbar() {
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted hover:bg-muted/80 transition-colors cursor-pointer"
             >
               <User className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm font-medium">{user?.fullName}</span>
+              <span className="text-sm font-medium hidden sm:inline">{user?.fullName}</span>
               <ChevronDown className="h-3 w-3 text-muted-foreground" />
             </button>
 

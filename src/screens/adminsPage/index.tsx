@@ -43,10 +43,10 @@ export default function AdminsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Adminlar</h1>
+          <h1 className="text-xl sm:text-2xl font-bold">Adminlar</h1>
           <p className="text-sm text-muted-foreground">{pagination.totalCount} ta admin</p>
         </div>
-        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 mr-2" /> Yangi admin</Button>
+        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 sm:mr-2" /><span className="hidden sm:inline"> Yangi admin</span></Button>
       </div>
       <div className="flex gap-2">
         <div className="relative flex-1 max-w-sm">

@@ -59,10 +59,10 @@ export default function CategoriesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Kategoriyalar</h1>
+          <h1 className="text-xl sm:text-2xl font-bold">Kategoriyalar</h1>
           <p className="text-sm text-muted-foreground">{pagination.totalCount} ta kategoriya</p>
         </div>
-        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 mr-2" /> Yangi kategoriya</Button>
+        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 sm:mr-2" /><span className="hidden sm:inline"> Yangi kategoriya</span></Button>
       </div>
 
       <div className="flex gap-2">

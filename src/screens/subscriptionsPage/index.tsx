@@ -45,8 +45,8 @@ export default function SubscriptionsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div><h1 className="text-2xl font-bold">Obunalar</h1><p className="text-sm text-muted-foreground">{pagination.totalCount} ta obuna</p></div>
-        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 mr-2" /> Obuna qo'shish</Button>
+        <div><h1 className="text-xl sm:text-2xl font-bold">Obunalar</h1><p className="text-sm text-muted-foreground">{pagination.totalCount} ta obuna</p></div>
+        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 sm:mr-2" /><span className="hidden sm:inline"> Obuna</span> qo'shish</Button>
       </div>
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Yuklanmoqda...</div>

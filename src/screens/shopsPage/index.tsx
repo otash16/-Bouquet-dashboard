@@ -98,13 +98,14 @@ export default function ShopsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Do'konlar</h1>
+          <h1 className="text-xl sm:text-2xl font-bold">Do'konlar</h1>
           <p className="text-sm text-muted-foreground">{pagination.totalCount} ta do'kon</p>
         </div>
-        <Button onClick={() => setView('create')}>
-          <Plus className="h-4 w-4 mr-2" /> Yangi do'kon
+        <Button onClick={() => setView('create')} size="sm" className="sm:size-default">
+          <Plus className="h-4 w-4 sm:mr-2" />
+          <span className="hidden sm:inline">Yangi do'kon</span>
         </Button>
       </div>
 
@@ -131,40 +132,35 @@ export default function ShopsPage() {
       ) : (
         <div className="grid gap-4">
           {shops.map(shop => (
-            <Card key={shop.id} className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-12 rounded-lg bg-muted flex items-center justify-center">
-                  {shop.logo ? (
-                    <img src={shop.logo} alt="" className="h-12 w-12 rounded-lg object-cover" />
-                  ) : (
-                    <Store className="h-6 w-6 text-muted-foreground" />
-                  )}
-                </div>
-                <div>
-                  <h3 className="font-semibold">{getName(shop)}</h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-sm text-muted-foreground">{shop.slug}</span>
-                    <span className="text-sm text-muted-foreground">·</span>
-                    <span className="text-sm text-muted-foreground">{shop.flowerCount} ta gul</span>
-                    {shop.phone && (
-                      <>
-                        <span className="text-sm text-muted-foreground">·</span>
-                        <span className="text-sm text-muted-foreground">{shop.phone}</span>
-                      </>
+            <Card key={shop.id} className="p-4">
+              <div className="flex items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                    {shop.logo ? (
+                      <img src={shop.logo} alt="" className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg object-cover" />
+                    ) : (
+                      <Store className="h-5 w-5 text-muted-foreground" />
                     )}
                   </div>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold truncate">{getName(shop)}</h3>
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1">
+                      <span className="text-xs sm:text-sm text-muted-foreground">{shop.slug}</span>
+                      <span className="text-xs sm:text-sm text-muted-foreground">· {shop.flowerCount} ta gul</span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <Badge variant={shop.status === 1 ? 'success' : 'destructive'}>
-                  {shop.status === 1 ? 'Aktiv' : 'Noaktiv'}
-                </Badge>
-                <Button variant="ghost" size="icon" onClick={() => { setSelectedShop(shop); setView('edit'); }}>
-                  <Pencil className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="icon" onClick={() => setDeleteShop(shop)}>
-                  <Trash2 className="h-4 w-4 text-destructive" />
-                </Button>
+                <div className="flex items-center gap-2 shrink-0">
+                  <Badge variant={shop.status === 1 ? 'success' : 'destructive'} className="hidden sm:inline-flex">
+                    {shop.status === 1 ? 'Aktiv' : 'Noaktiv'}
+                  </Badge>
+                  <Button variant="ghost" size="icon" onClick={() => { setSelectedShop(shop); setView('edit'); }}>
+                    <Pencil className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" onClick={() => setDeleteShop(shop)}>
+                    <Trash2 className="h-4 w-4 text-destructive" />
+                  </Button>
+                </div>
               </div>
             </Card>
           ))}

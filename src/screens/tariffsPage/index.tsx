@@ -35,15 +35,15 @@ export default function TariffsPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <div><h1 className="text-2xl font-bold">Tariflar</h1><p className="text-sm text-muted-foreground">{pagination.totalCount} ta tarif</p></div>
-        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 mr-2" /> Yangi tarif</Button>
+        <div><h1 className="text-xl sm:text-2xl font-bold">Tariflar</h1><p className="text-sm text-muted-foreground">{pagination.totalCount} ta tarif</p></div>
+        <Button onClick={() => setView('create')}><Plus className="h-4 w-4 sm:mr-2" /><span className="hidden sm:inline"> Yangi tarif</span></Button>
       </div>
       {loading ? (
         <div className="text-center py-12 text-muted-foreground">Yuklanmoqda...</div>
       ) : tariffs.length === 0 ? (
         <div className="text-center py-12"><CreditCard className="h-12 w-12 mx-auto text-muted-foreground/50 mb-4" /><p className="text-muted-foreground">Tariflar topilmadi</p></div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {tariffs.map(tariff => (
             <Card key={tariff.id} className="p-6">
               <div className="flex items-center justify-between mb-4">

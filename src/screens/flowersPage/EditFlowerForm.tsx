@@ -71,11 +71,11 @@ export default function EditFlowerForm({ flower, onBack, onUpdated }: Props) {
 
             <MultiImageUpload label="Gul rasmlari" values={images} onChange={setImages} onUpload={handleUploadFlowerImage} max={10} />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (UZ) *</label><Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (RU)</label><Input value={form.nameRu} onChange={e => setForm({ ...form, nameRu: e.target.value })} /></div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Kategoriya</label>
                 <select value={form.categoryId} onChange={e => setForm({ ...form, categoryId: e.target.value })} className={selectClass}>
@@ -91,11 +91,11 @@ export default function EditFlowerForm({ flower, onBack, onUpdated }: Props) {
                 </select>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Narx (so'm) *</label><Input type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Chegirma narx</label><Input type="number" value={form.discountPrice} onChange={e => setForm({ ...form, discountPrice: e.target.value })} /></div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Tavsif (UZ)</label><Textarea value={form.descUz} onChange={e => setForm({ ...form, descUz: e.target.value })} rows={3} /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Tavsif (RU)</label><Textarea value={form.descRu} onChange={e => setForm({ ...form, descRu: e.target.value })} rows={3} /></div>
             </div>

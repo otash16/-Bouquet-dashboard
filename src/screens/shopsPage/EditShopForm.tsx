@@ -95,7 +95,7 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
               <ImageUpload label="Cover rasm" value={coverImage} onChange={setCoverImage} onUpload={handleUploadShopImage} />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Nomi (UZ) *</label>
                 <Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required />
@@ -106,7 +106,7 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Slug *</label>
                 <Input value={form.slug} onChange={e => setForm({ ...form, slug: e.target.value })} required />
@@ -124,7 +124,7 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Telefon</label>
                 <Input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} />
@@ -135,7 +135,7 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Tavsif (UZ)</label>
                 <Textarea value={form.descUz} onChange={e => setForm({ ...form, descUz: e.target.value })} rows={3} />

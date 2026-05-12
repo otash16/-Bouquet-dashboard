@@ -80,7 +80,7 @@ export default function CreateShopForm({ onBack, onCreated }: Props) {
               <ImageUpload label="Cover rasm" value={coverImage} onChange={setCoverImage} onUpload={handleUploadShopImage} />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Nomi (UZ) *</label>
                 <Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required />
@@ -96,7 +96,7 @@ export default function CreateShopForm({ onBack, onCreated }: Props) {
               <Input value={form.slug} onChange={e => setForm({ ...form, slug: e.target.value })} placeholder="masalan: gul-markazi" required />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Telefon</label>
                 <Input value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })} placeholder="+998..." />
@@ -107,7 +107,7 @@ export default function CreateShopForm({ onBack, onCreated }: Props) {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Tavsif (UZ)</label>
                 <Textarea value={form.descUz} onChange={e => setForm({ ...form, descUz: e.target.value })} rows={3} />
