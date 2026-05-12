@@ -55,8 +55,8 @@ export default function FlowersPage() {
 
   const formatPrice = (price: number) => price.toLocaleString('uz-UZ') + " so'm";
 
-  if (view === 'create') return <CreateFlowerForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchFlowers(1, ''); }} />;
-  if (view === 'edit' && selectedFlower) return <EditFlowerForm flower={selectedFlower} onBack={() => { setView('list'); setSelectedFlower(null); }} onUpdated={() => { setView('list'); setSelectedFlower(null); fetchFlowers(); }} />;
+  if (view === 'create') return <div className="animate-fade-in"><CreateFlowerForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchFlowers(1, ''); }} /></div>;
+  if (view === 'edit' && selectedFlower) return <div className="animate-fade-in"><EditFlowerForm flower={selectedFlower} onBack={() => { setView('list'); setSelectedFlower(null); }} onUpdated={() => { setView('list'); setSelectedFlower(null); fetchFlowers(); }} /></div>;
 
   return (
     <div className="space-y-6">

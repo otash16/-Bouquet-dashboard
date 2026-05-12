@@ -94,8 +94,8 @@ export default function AppSidebar({ open, onClose }: Props) {
       {/* Mobile sidebar overlay */}
       {open && (
         <>
-          <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={onClose} />
-          <aside className="fixed inset-y-0 left-0 w-72 flex flex-col bg-sidebar z-50 md:hidden shadow-xl">
+          <div className="fixed inset-0 bg-black/50 z-40 md:hidden animate-overlay-in" onClick={onClose} />
+          <aside className="fixed inset-y-0 left-0 w-72 flex flex-col bg-sidebar z-50 md:hidden shadow-xl animate-slide-in-left">
             {sidebarContent}
           </aside>
         </>

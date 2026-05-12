@@ -40,7 +40,7 @@ export default function SubscriptionsPage() {
 
   const formatPrice = (p: number) => p.toLocaleString('uz-UZ') + " so'm";
 
-  if (view === 'create') return <CreateSubscriptionForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchSubs(1); }} />;
+  if (view === 'create') return <div className="animate-fade-in"><CreateSubscriptionForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchSubs(1); }} /></div>;
 
   return (
     <div className="space-y-6">

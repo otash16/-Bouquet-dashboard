@@ -89,11 +89,11 @@ export default function ShopsPage() {
   const getName = (shop: Shop) => shop.translations.find(t => t.language === 'uz')?.name || shop.slug;
 
   if (view === 'create') {
-    return <CreateShopForm onBack={() => setView('list')} onCreated={handleCreated} />;
+    return <div className="animate-fade-in"><CreateShopForm onBack={() => setView('list')} onCreated={handleCreated} /></div>;
   }
 
   if (view === 'edit' && selectedShop) {
-    return <EditShopForm shop={selectedShop} onBack={() => { setView('list'); setSelectedShop(null); }} onUpdated={handleUpdated} />;
+    return <div className="animate-fade-in"><EditShopForm shop={selectedShop} onBack={() => { setView('list'); setSelectedShop(null); }} onUpdated={handleUpdated} /></div>;
   }
 
   return (

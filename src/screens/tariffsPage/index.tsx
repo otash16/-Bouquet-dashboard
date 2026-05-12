@@ -30,7 +30,7 @@ export default function TariffsPage() {
   const getName = (t: Tariff) => t.translations.find(tr => tr.language === 'uz')?.name || 'Nomsiz';
   const formatPrice = (p: number) => p.toLocaleString('uz-UZ') + " so'm";
 
-  if (view === 'create') return <CreateTariffForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchTariffs(1); }} />;
+  if (view === 'create') return <div className="animate-fade-in"><CreateTariffForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchTariffs(1); }} /></div>;
 
   return (
     <div className="space-y-6">

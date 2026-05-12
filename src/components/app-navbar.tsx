@@ -65,7 +65,7 @@ export default function AppNavbar({ onMenuClick }: Props) {
             {menuOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setMenuOpen(false)} />
-                <div className="absolute right-0 top-full mt-1 w-48 rounded-lg border bg-popover p-1 shadow-md z-50">
+                <div className="absolute right-0 top-full mt-1 w-48 rounded-lg border bg-popover p-1 shadow-md z-50 animate-scale-in">
                   <button
                     onClick={() => { setMenuOpen(false); setPasswordModalOpen(true); }}
                     className="flex items-center gap-2 w-full px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors cursor-pointer"

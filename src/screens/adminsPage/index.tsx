@@ -37,7 +37,7 @@ export default function AdminsPage() {
   const handleSearch = () => { setPage(1); fetchAdmins(1, search); };
   const handlePageChange = (p: number) => { setPage(p); fetchAdmins(p, search); };
 
-  if (view === 'create') return <CreateAdminForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchAdmins(1, ''); }} />;
+  if (view === 'create') return <div className="animate-fade-in"><CreateAdminForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchAdmins(1, ''); }} /></div>;
 
   return (
     <div className="space-y-6">

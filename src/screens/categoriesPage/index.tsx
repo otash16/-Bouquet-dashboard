@@ -52,8 +52,8 @@ export default function CategoriesPage() {
   const handlePageChange = (p: number) => { setPage(p); fetchCategories(p, search); };
   const getName = (c: Category) => c.translations.find(t => t.language === 'uz')?.name || c.slug;
 
-  if (view === 'create') return <CreateCategoryForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchCategories(1, ''); }} />;
-  if (view === 'edit' && selectedCategory) return <EditCategoryForm category={selectedCategory} onBack={() => { setView('list'); setSelectedCategory(null); }} onUpdated={() => { setView('list'); setSelectedCategory(null); fetchCategories(); }} />;
+  if (view === 'create') return <div className="animate-fade-in"><CreateCategoryForm onBack={() => setView('list')} onCreated={() => { setView('list'); fetchCategories(1, ''); }} /></div>;
+  if (view === 'edit' && selectedCategory) return <div className="animate-fade-in"><EditCategoryForm category={selectedCategory} onBack={() => { setView('list'); setSelectedCategory(null); }} onUpdated={() => { setView('list'); setSelectedCategory(null); fetchCategories(); }} /></div>;
 
   return (
     <div className="space-y-6">
