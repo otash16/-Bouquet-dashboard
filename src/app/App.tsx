@@ -11,6 +11,7 @@ import AdminsPage from '@/screens/adminsPage';
 import TariffsPage from '@/screens/tariffsPage';
 import SubscriptionsPage from '@/screens/subscriptionsPage';
 import DashboardPage from '@/screens/dashboardPage';
+import SessionsPage from '@/screens/sessionsPage';
 import { setUser } from '@/auth/slice';
 import AuthService from './services/AuthService';
 
@@ -47,6 +48,7 @@ export default function App() {
         <Route path="/admins" element={<AdminsPage />} />
         <Route path="/tariffs" element={<TariffsPage />} />
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
+        <Route path="/sessions" element={<SessionsPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
