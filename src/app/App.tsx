@@ -4,37 +4,14 @@ import { useDispatch } from 'react-redux';
 import MainLayout from '@/layout/MainLayout';
 import RequireAuth from '@/libs/helper/RequireAuth';
 import LoginPage from '@/screens/loginPage';
+import ShopsPage from '@/screens/shopsPage';
+import CategoriesPage from '@/screens/categoriesPage';
+import FlowersPage from '@/screens/flowersPage';
+import AdminsPage from '@/screens/adminsPage';
+import TariffsPage from '@/screens/tariffsPage';
+import SubscriptionsPage from '@/screens/subscriptionsPage';
 import { setUser } from '@/auth/slice';
 import AuthService from './services/AuthService';
-
-// Placeholder pages
-function DashboardPage() {
-  return <div className="text-2xl font-bold">Dashboard</div>;
-}
-
-function ShopsPage() {
-  return <div className="text-2xl font-bold">Do'konlar</div>;
-}
-
-function CategoriesPage() {
-  return <div className="text-2xl font-bold">Kategoriyalar</div>;
-}
-
-function FlowersPage() {
-  return <div className="text-2xl font-bold">Gullar</div>;
-}
-
-function AdminsPage() {
-  return <div className="text-2xl font-bold">Adminlar</div>;
-}
-
-function TariffsPage() {
-  return <div className="text-2xl font-bold">Tariflar</div>;
-}
-
-function SubscriptionsPage() {
-  return <div className="text-2xl font-bold">Obunalar</div>;
-}
 
 export default function App() {
   const dispatch = useDispatch();
@@ -62,7 +39,6 @@ export default function App() {
           </RequireAuth>
         }
       >
-        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/shops" element={<ShopsPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/flowers" element={<FlowersPage />} />
