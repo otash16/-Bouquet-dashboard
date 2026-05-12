@@ -4,18 +4,27 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MultiImageUpload } from '@/components/ImageUpload';
 import FlowerService from '@/app/services/FlowerService';
 import ShopService from '@/app/services/ShopService';
 import CategoryService from '@/app/services/CategoryService';
+import UploadService from '@/app/services/UploadService';
 
 interface Props { onBack: () => void; onCreated: () => void; }
 
 export default function CreateFlowerForm({ onBack, onCreated }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [images, setImages] = useState<string[]>([]);
   const [shops, setShops] = useState<{ id: string; translations: { name: string }[] }[]>([]);
   const [categories, setCategories] = useState<{ id: string; translations: { name: string }[] }[]>([]);
   const [form, setForm] = useState({ shopId: '', categoryId: '', price: '', discountPrice: '', nameUz: '', nameRu: '', descUz: '', descRu: '' });
+  const uploadService = new UploadService();
+
+  const handleUploadFlowerImage = async (file: File) => {
+    const result = await uploadService.uploadFlowerImage(file);
+    return result.url;
+  };
 
   useEffect(() => {
     new ShopService().getShops({ limit: 100 }).then(r => setShops(r.records));
@@ -32,7 +41,7 @@ export default function CreateFlowerForm({ onBack, onCreated }: Props) {
         categoryId: form.categoryId || null,
         price: Number(form.price),
         discountPrice: form.discountPrice ? Number(form.discountPrice) : null,
-        images: [],
+        images,
         status: 1,
         translations: [
           { language: 'uz', name: form.nameUz, description: form.descUz || null },
@@ -54,6 +63,9 @@ export default function CreateFlowerForm({ onBack, onCreated }: Props) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
+
+            <MultiImageUpload label="Gul rasmlari" values={images} onChange={setImages} onUpload={handleUploadFlowerImage} max={10} />
+
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (UZ) *</label><Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (RU)</label><Input value={form.nameRu} onChange={e => setForm({ ...form, nameRu: e.target.value })} /></div>

@@ -4,16 +4,25 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { MultiImageUpload } from '@/components/ImageUpload';
 import FlowerService from '@/app/services/FlowerService';
 import CategoryService from '@/app/services/CategoryService';
+import UploadService from '@/app/services/UploadService';
 
-interface FlowerItem { id: string; price: number; discountPrice: number | null; status: number; shopId: string; translations: { language: string; name: string; description: string | null }[]; categoryId?: string | null; }
+interface FlowerItem { id: string; price: number; discountPrice: number | null; images: string[]; status: number; shopId: string; translations: { language: string; name: string; description: string | null }[]; categoryId?: string | null; }
 interface Props { flower: FlowerItem; onBack: () => void; onUpdated: () => void; }
 
 export default function EditFlowerForm({ flower, onBack, onUpdated }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [images, setImages] = useState<string[]>(flower.images || []);
   const [categories, setCategories] = useState<{ id: string; translations: { name: string }[] }[]>([]);
+  const uploadService = new UploadService();
+
+  const handleUploadFlowerImage = async (file: File) => {
+    const result = await uploadService.uploadFlowerImage(file);
+    return result.url;
+  };
   const get = (lang: string) => flower.translations.find(t => t.language === lang);
   const [form, setForm] = useState({
     categoryId: (flower as any).categoryId || '',
@@ -37,6 +46,7 @@ export default function EditFlowerForm({ flower, onBack, onUpdated }: Props) {
         categoryId: form.categoryId || null,
         price: Number(form.price),
         discountPrice: form.discountPrice ? Number(form.discountPrice) : null,
+        images,
         status: form.status,
         translations: [
           { language: 'uz', name: form.nameUz, description: form.descUz || null },
@@ -58,6 +68,9 @@ export default function EditFlowerForm({ flower, onBack, onUpdated }: Props) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
+
+            <MultiImageUpload label="Gul rasmlari" values={images} onChange={setImages} onUpload={handleUploadFlowerImage} max={10} />
+
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (UZ) *</label><Input value={form.nameUz} onChange={e => setForm({ ...form, nameUz: e.target.value })} required /></div>
               <div className="space-y-2"><label className="text-sm font-medium">Nomi (RU)</label><Input value={form.nameRu} onChange={e => setForm({ ...form, nameRu: e.target.value })} /></div>

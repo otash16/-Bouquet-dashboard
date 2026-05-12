@@ -14,6 +14,7 @@ interface Shop {
   id: string;
   slug: string;
   logo: string | null;
+  coverImage: string | null;
   phone: string | null;
   address: string | null;
   status: number;

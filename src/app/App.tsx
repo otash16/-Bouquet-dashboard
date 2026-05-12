@@ -10,6 +10,7 @@ import FlowersPage from '@/screens/flowersPage';
 import AdminsPage from '@/screens/adminsPage';
 import TariffsPage from '@/screens/tariffsPage';
 import SubscriptionsPage from '@/screens/subscriptionsPage';
+import DashboardPage from '@/screens/dashboardPage';
 import { setUser } from '@/auth/slice';
 import AuthService from './services/AuthService';
 
@@ -39,6 +40,7 @@ export default function App() {
           </RequireAuth>
         }
       >
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/shops" element={<ShopsPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/flowers" element={<FlowersPage />} />
@@ -47,7 +49,7 @@ export default function App() {
         <Route path="/subscriptions" element={<SubscriptionsPage />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/shops" replace />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 }

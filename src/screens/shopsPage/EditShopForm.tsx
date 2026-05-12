@@ -4,11 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import ImageUpload from '@/components/ImageUpload';
 import ShopService from '@/app/services/ShopService';
+import UploadService from '@/app/services/UploadService';
 
 interface Shop {
   id: string;
   slug: string;
+  logo: string | null;
+  coverImage: string | null;
   phone: string | null;
   address: string | null;
   status: number;
@@ -24,6 +28,14 @@ interface Props {
 export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [logo, setLogo] = useState<string | null>(shop.logo);
+  const [coverImage, setCoverImage] = useState<string | null>(shop.coverImage);
+  const uploadService = new UploadService();
+
+  const handleUploadShopImage = async (file: File) => {
+    const result = await uploadService.uploadShopImage(file);
+    return result.url;
+  };
 
   const getTranslation = (lang: string) => shop.translations.find(t => t.language === lang);
 
@@ -46,6 +58,8 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
     try {
       await new ShopService().updateShop(shop.id, {
         slug: form.slug,
+        logo,
+        coverImage,
         phone: form.phone || null,
         address: form.address || null,
         status: form.status,
@@ -75,6 +89,11 @@ export default function EditShopForm({ shop, onBack, onUpdated }: Props) {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-md">{error}</div>}
+
+            <div className="flex gap-6">
+              <ImageUpload label="Logo" value={logo} onChange={setLogo} onUpload={handleUploadShopImage} />
+              <ImageUpload label="Cover rasm" value={coverImage} onChange={setCoverImage} onUpload={handleUploadShopImage} />
+            </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
